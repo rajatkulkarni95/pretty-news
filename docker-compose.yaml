@@ -1,0 +1,9 @@
+services:
+  hckrnws:
+    container_name: hckrnws
+    image: # build your own image and put the tag here
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges
+    ports:
+      - 3000:3000
