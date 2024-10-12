@@ -1,0 +1,12 @@
+services:
+  hckrnws:
+    container_name: hckrnws
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hckrnws:latest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges
+    ports:
+      - 3000:3000
