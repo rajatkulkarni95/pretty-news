@@ -1,7 +1,10 @@
 services:
   hckrnws:
     container_name: hckrnws
-    image: # build your own image and put the tag here
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hckrnws:latest
     restart: unless-stopped
     security_opt:
       - no-new-privileges

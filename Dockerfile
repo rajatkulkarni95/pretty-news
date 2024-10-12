@@ -1,4 +1,4 @@
-# Use the LTS Slim Node.js image
+# Use the official Node.js image
 FROM node:lts-slim
 
 # Set the working directory in the container
@@ -11,13 +11,16 @@ COPY package.json pnpm-lock.yaml ./
 RUN npm install -g pnpm
 
 # Install project dependencies
-RUN pnpm install
+RUN pnpm install --frozen-lockfile
 
 # Copy the rest of the application code
 COPY . .
 
+# Build the application for production
+RUN pnpm run build
+
 # Expose the port
 EXPOSE 3000
 
-# Command to run the application
-CMD ["pnpm", "run", "dev"]
+# Command to run the application in production
+CMD ["pnpm", "run", "start"]
